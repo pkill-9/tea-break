@@ -1,0 +1,7 @@
+bin/
+javadoc/
+cscope.files
+cscope.out
+editbegin.sh
+editdone.sh
+*.swp

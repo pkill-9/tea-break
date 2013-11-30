@@ -1,5 +1,5 @@
-<project name="comp90049-project-2" default="compile" basedir=".">
-    <property name="tests-path" value="mps/comp90049/tests"/>
+<project name="tea-break" default="compile" basedir=".">
+    <property name="tests-path" value=""/>
     <property name="build" location="bin"/>
 
     <!-- Silence an ant warning. -->

@@ -18,8 +18,8 @@ public class TeaBreakWindow extends JFrame
         public
     TeaBreakWindow () throws Exception
     {
-        setContentPane (new JPanel (new BorderLayout ()));
         Container pane = getContentPane ();
+        pane.setLayout (new BorderLayout ());
 
         JLabel message = new JLabel ("It's time to take a break!");
         Font labelFont = message.getFont ();
@@ -30,6 +30,7 @@ public class TeaBreakWindow extends JFrame
         addButtonPanel (pane);
 
         UIManager.setLookAndFeel (UIManager.getSystemLookAndFeelClassName ());
+        setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
         setTitle ("Tea Break");
         pack ();
         setLocationRelativeTo (null);
@@ -41,7 +42,7 @@ public class TeaBreakWindow extends JFrame
     {
         JPanel buttonPanel = new JPanel (new FlowLayout ());
         buttonPanel.add (new JButton ("Why"));
-        buttonPanel.add (new JButton ("Yes Boss"));
+        buttonPanel.add (new DismissButton ());
 
         // add the buttons to the main window.
         panel.add (buttonPanel, BorderLayout.PAGE_END);

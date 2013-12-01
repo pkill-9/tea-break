@@ -41,7 +41,7 @@ public class TeaBreakWindow extends JFrame
     addButtonPanel (Container panel)
     {
         JPanel buttonPanel = new JPanel (new FlowLayout ());
-        buttonPanel.add (new JButton ("Why"));
+        buttonPanel.add (new WhyButton (this));
         buttonPanel.add (new DismissButton ());
 
         // add the buttons to the main window.

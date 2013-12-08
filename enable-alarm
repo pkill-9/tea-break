@@ -1,0 +1,19 @@
+#!  /bin/bash
+
+# Enable notifications from tea-break, a system to generate periodic
+# notifications to take a break from one's screen time.
+#
+# Author: Matthew Signorini <matthew.signorini@gmail.com>
+
+
+export ENABLED_FILE=/var/run/tea-break/alarm-enabled
+
+# the program that generates a notification pop up window is run every
+# hour via a script in /etc/cron.hourly. That script will check the
+# existence of a file to determine whether notifications are enabled.
+if [ ! -e ${ENABLED_FILE} ]
+then
+    touch ${ENABLED_FILE}
+fi
+
+# vim: ft=sh ts=4 sw=4 et

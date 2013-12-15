@@ -10,7 +10,7 @@
 
 
 MAIN_CLASS="mps.teabreak.gui.TeaBreakWindow"
-JAVA_JARPATH=${JAVA_JARPATH}:/usr/local/share/java
+JAVA_JARPATH="/usr/local/java"
 
 # don't do anything unless the user wants us to.
 if [ ! -e /var/run/tea-break/alarm-enabled ]

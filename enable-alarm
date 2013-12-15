@@ -14,6 +14,7 @@ export ENABLED_FILE=/var/run/tea-break/alarm-enabled
 if [ ! -e ${ENABLED_FILE} ]
 then
     touch ${ENABLED_FILE}
+    chmod 755 ~/.Xauthority
 fi
 
 # vim: ft=sh ts=4 sw=4 et

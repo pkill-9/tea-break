@@ -1,5 +1,6 @@
 <project name="tea-break" default="compile" basedir=".">
     <property name="tests-path" value=""/>
+    <property name="build" location="target"/>
     <property name="classes" location="target/classes"/>
     <property name="jardir" location="target/dist"/>
 

@@ -2,20 +2,15 @@
 
 # install script for the tea-break alert system.
 
+PREFIX=/usr/local
+
 # build the alert program.
 ant deploy
 
-# check that we have /etc/cron.hourly to run hourly cron jobs via anacron.
-if [ ! -d /etc/cron.hourly ]
-then
-    echo "Unable to install tea-break: I depend on Anacron to start the\
-        alert program every hour.\nInstall Anacron then try again."
-fi
+install --mode=755 ./enable-alarm ${PREFIX}/bin
+install --mode=755 ./disable-alarm ${PREFIX}/bin
+install -D --mode=755 ./tea-break.sh ${PREFIX}/share/tea-break/tea-break.sh
 
-install --mode=755 ./tea-break.sh /etc/cron.hourly/tea-break
-install --mode=755 ./enable-alarm /usr/local/bin
-install --mode=755 ./disable-alarm /usr/local/bin
-
-install -D ./target/dist/tea-break.jar /usr/local/share/java
+install -D ./target/dist/tea-break.jar ${PREFIX}/share/java
 
 # vim: ts=4 sw=4 et

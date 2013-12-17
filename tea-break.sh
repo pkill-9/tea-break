@@ -20,8 +20,6 @@ then
     exit
 fi
 
-XAUTHORITY=`cat ${ENABLED_FILE}`
-
 find_java_runtime
 find_jars tea-break.jar
 

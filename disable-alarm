@@ -11,6 +11,7 @@ export ENABLED_FILE=/tmp/tea-break/alarm-enabled
 if [ -e ${ENABLED_FILE} ]
 then
     rm -f ${ENABLED_FILE}
+    echo "" | crontab -
 fi
 
 # vim: ft=sh ts=4 sw=4 et

@@ -9,7 +9,7 @@
 PREFIX=/usr/local
 
 ENABLED_FILE=/tmp/tea-break/alarm-enabled
-ALERT_SCRIPT=${PREFIX}/lib/tea-break/tea-break.sh
+ALERT_SCRIPT=${PREFIX}/share/tea-break/tea-break.sh
 CRON_SCRIPT="0 * * * * env DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY} ${ALERT_SCRIPT}\n"
 
 if [ ! -d /tmp/tea-break ]

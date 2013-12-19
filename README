@@ -1,0 +1,58 @@
+tea-break: An app that generates periodic alerts to tell the user to take
+a break.
+
+Author: Matthew Signorini <matthew.signorini@gmail.com>
+
+
+The alerts are controlled by two commands:
+	enable-alarm		Begin issuing alerts
+	disable-alarm		Cease issuing alerts
+
+Presently, alerts are given on the hour, and the frequency and offset into
+the hour are not configurable. Providing more flexible timing options will,
+however, be the subject of further development.
+
+
+IMPORTANT:
+=================================================
+Have you set up existing cron jobs in your own (user) crontab? If the output
+of the command "crontab -l" indicates so, then you need to read this. No
+crontab for you? In that case you can skip ahead to instalation.
+
+tea-break sets up a cron job in your user crontab to pop up an alert window
+every hour, right? But it's not smart about setting up its cron job. It
+basically replaces your crontab (in the event that you have existing cron
+jobs set up) with a single cron job to run tea-break, obliterating whatever
+crontab you had before. If you don't want your existing crontab to go to
+magnetic heaven each time you enable-alarm, then you will want to wait
+until tea-break is more polite, and preserves existing cron jobs.
+
+
+INSTALLATION:
+=================================================
+tea-break is written in Java and Bash shell script, and makes use of the
+cron scheduler to issue periodic alerts. This means that it is only
+compatible with Unix-like systems, such as Linux, BSD and Mac OSX. There
+is currently no Microsoft Windows support, and no intention to port to
+Windows. However, if you feel like porting to Windows, do let me know so I
+can link others to your project fork.
+
+Compiling the java source code also requires Apache Ant, which can be
+obtained via your package manager for Linux/Unix, or can be downloaded
+from Oracle for OSX.
+
+To install tea-break, open a terminal and cd to the directory where this
+README is located (which should be where you have unpacked the archive
+that you downloaded, or where you cloned the repository). Then run the
+command:
+
+	sudo ./install.sh
+
+install.sh will compile all the source files by invoking Ant, and will
+copy the compiled binaries and command scripts to the appropriate
+directories. By default, everything is installed under /usr/local, which
+is the standard location for software that is not maintained by the system 
+package manager. This prefix is currently not easily re-configurable.
+
+
+vim: ts=4 sw=4 et

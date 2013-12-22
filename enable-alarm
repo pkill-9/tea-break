@@ -17,13 +17,16 @@ then
     mkdir /tmp/tea-break
 fi
 
-# the program that generates a notification pop up window is run every
-# hour via a script in /etc/cron.hourly. That script will check the
-# existence of a file to determine whether notifications are enabled.
 if [ ! -e ${ENABLED_FILE} ]
 then
     touch ${ENABLED_FILE}
-    echo -e "Installing cron script:\n${CRON_SCRIPT}"
+    OLD_CRONTAB=`crontab -l`
+
+    if [ $? = 0 ]
+    then
+        echo -e "${OLD_CRONTAB}" > /tmp/tea-break/crontab.old
+    fi
+
     echo -e "${CRON_SCRIPT}" | crontab
 fi
 

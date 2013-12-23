@@ -5,10 +5,23 @@
 # alerts, but if that is all that you want to do then you should use the
 # disable-alarm command instead.
 
-rm /etc/cron.hourly/tea-break
-rm /usr/local/bin/enable-alarm
-rm /usr/local/bin/disable-alarm
-rm /usr/local/share/java/tea-break.jar
+. config.sh
+
+
+SCRIPT_PATH="${PREFIX}/share/tea-break"
+
+echo "Removing commands from ${PREFIX}/bin..."
+
+rm ${PREFIX}/bin/enable-alarm
+rm ${PREFIX}/bin/disable-alarm
+
+echo "Removing jar from ${PREFIX}/share/java..."
+
+rm ${PREFIX}/share/java/tea-break.jar
+
+echo "Removing scripts from ${SCRIPT_PATH}..."
+
+rm -r ${SCRIPT_PATH}
 
 ant clean
 

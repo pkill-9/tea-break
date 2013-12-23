@@ -6,15 +6,15 @@
 # Author: Matthew Signorini <matthew.signorini@gmail.com>
 
 
-PREFIX=/usr/local
+. ./config.sh
 
-ENABLED_FILE=/tmp/tea-break/alarm-enabled
+ENABLED_FILE=${RUNTIME}/alarm-enabled
 ALERT_SCRIPT=${PREFIX}/share/tea-break/tea-break.sh
 CRON_SCRIPT="0 * * * * env DISPLAY=${DISPLAY} XAUTHORITY=${XAUTHORITY} ${ALERT_SCRIPT}\n"
 
-if [ ! -d /tmp/tea-break ]
+if [ ! -d ${RUNTIME} ]
 then
-    mkdir /tmp/tea-break
+    mkdir ${RUNTIME}
 fi
 
 if [ ! -e ${ENABLED_FILE} ]
@@ -24,7 +24,7 @@ then
 
     if [ $? = 0 ]
     then
-        echo -e "${OLD_CRONTAB}" > /tmp/tea-break/crontab.old
+        echo -e "${OLD_CRONTAB}" > ${RUNTIME}/crontab.old
     fi
 
     echo -e "${CRON_SCRIPT}" | crontab

@@ -6,15 +6,17 @@
 # Author: Matthew Signorini <matthew.signorini@gmail.com>
 
 
-export ENABLED_FILE=/tmp/tea-break/alarm-enabled
+. ./config.sh
+
+ENABLED_FILE=${RUNTIME}/alarm-enabled
 
 if [ -e ${ENABLED_FILE} ]
 then
     rm -f ${ENABLED_FILE}
 
-    if [ -e /tmp/tea-break/crontab.old ]
+    if [ -e ${RUNTIME}/crontab.old ]
     then
-        cat /tmp/tea-break/crontab.old | crontab -
+        cat ${RUNTIME}/crontab.old | crontab -
     else
         echo "" | crontab -
     fi

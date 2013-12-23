@@ -2,15 +2,29 @@
 
 # install script for the tea-break alert system.
 
-PREFIX=/usr/local
+. ./config.sh
+
 
 # build the alert program.
 ant deploy
 
-install --mode=755 ./enable-alarm ${PREFIX}/bin
-install --mode=755 ./disable-alarm ${PREFIX}/bin
-install -D --mode=755 ./tea-break.sh ${PREFIX}/share/tea-break/tea-break.sh
+SCRIPT_PATH="${PREFIX}/share/tea-break"
+JAR_DEST="${PREFIX}/share/java"
 
-install -D ./target/dist/tea-break.jar ${PREFIX}/share/java
+echo "Installing scripts to ${SCRIPT_PATH}"
+
+install -D --mode=755 ./config.sh
+install -D --mode=755 ./enable-alarm ${SCRIPT_PATH}
+install -D --mode=755 ./disable-alarm ${SCRIPT_PATH}
+install -D --mode=755 ./tea-break.sh ${SCRIPT_PATH}
+
+echo "Creating links to ${SCRIPT_PATH} in ${PREFIX}/bin..."
+
+ln -s ${SCRIPT_PATH}/enable-alarm ${PREFIX}/bin
+ln -s ${SCRIPT_PATH}/disable-alarm ${PREFIX}/bin
+
+echo "Installing jars to ${JAR_DEST}"
+
+install -D ./target/dist/tea-break.jar ${JAR_DEST}
 
 # vim: ts=4 sw=4 et

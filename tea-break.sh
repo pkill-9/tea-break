@@ -6,13 +6,14 @@
 #
 # Matthew Signorini <matthew.signorini@gmail.com>
 
+. ./config.sh
 . /usr/lib/java-wrappers/java-wrappers.sh
 
 
 MAIN_CLASS="mps.teabreak.gui.TeaBreakWindow"
-JAVA_JARPATH=/usr/local/share/java
-ENABLED_FILE=/tmp/tea-break/alarm-enabled
-DEBUG_LOG=/tmp/tea-break/debug.log
+JAVA_JARPATH=${PREFIX}/share/java
+ENABLED_FILE=${RUNTIME}/alarm-enabled
+DEBUG_LOG=${RUNTIME}/debug.log
 
 # don't do anything unless the user wants us to.
 if [ ! -e ${ENABLED_FILE} ]
